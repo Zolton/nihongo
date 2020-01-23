@@ -1,4 +1,3 @@
-
 import React from "react";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
@@ -9,7 +8,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
       localStorage.getItem("token") ? (
         <Component {...props} />
       ) : (
-        <Redirect to="/" />
+        <Redirect to="/home" />
       )
     }
   />
