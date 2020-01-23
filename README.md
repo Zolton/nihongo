@@ -10,7 +10,7 @@
 ## Later: 
 * Adjective conjugation quizzes
 * Ichigan + Godan noun conjugations
-** Idea is to be similar to MATCHA, a quiz version of JapaneseVerbConjugator.com
+* Idea is to be similar to MATCHA, a quiz version of JapaneseVerbConjugator.com
 
 ## Farther future:
 * All user-submitted quizzes go to community for voting; need X amount of "yes" votes to ensure translation/answers are correct before being put in pool of multiple choice quizzes
