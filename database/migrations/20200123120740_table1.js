@@ -13,6 +13,9 @@ exports.up = function(knex) {
         .notNullable()
         tbl.string("password", 128)
         .notNullable()
+        tbl
+        .string("email", 128)
+        .unique()
     })
     .createTable("questions", tbl => {
         tbl
