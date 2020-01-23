@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./App.css";
-import HeaderLink from "./components/EveryPage/TopLinks"
-import LandingPage from "./components/Login/LandingPage";
-import Login from "./components/Login/Login"
-import Registration from "./components/Login/Registration"
-import PrivateRoute from "./components/Login/PrivateRoute"
-import KnownUserHomePage from "./components/Users/UserHome"
+import HeaderLink from "./EveryPage/TopLinks"
+import LandingPage from "./Login/LandingPage";
+import Login from "./Login/Login"
+import Registration from "./Login/Registration"
+import PrivateRoute from "./Login/PrivateRoute"
+import KnownUserHomePage from "./Users/UserHome"
 
 function App() {
   return (
