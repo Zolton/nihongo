@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./App.css";
-import HeaderLink from "./EveryPage/TopLinks"
+import HeaderLink from "./EveryPage/HeaderLinks"
 import LandingPage from "./Login/LandingPage";
 import Login from "./Login/Login"
 import Registration from "./Login/Registration"
