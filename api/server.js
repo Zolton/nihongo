@@ -6,8 +6,8 @@ const cors = require("cors")
 const jwt = require("jsonwebtoken")
 
 // Location of routers
-const userRouter = require("../userRouter/userRouter")
-const quizRouter = require("../mulChoiceQuizRouter/quizRouter")
+const userRouter = require("../userRouterFolder/userRouter")
+const mulChoiceRouter = require("../mulChoiceFolder/mulChoiceRouter")
 
 // Global server settings
 server.use(express.json())
@@ -16,10 +16,13 @@ server.use(cors())
 
 // Routers in use
 server.use("/users", userRouter)
-server.use("/quiz", quizRouter)
+server.use("/quiz", mulChoiceRouter)
 
 server.get("/", (req, res) => {
     res.status(200).json({Hello: "from server"})
 })
+
+// Security risks:
+// - userRouter & Helper, getAll
 
 module.exports = server

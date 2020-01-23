@@ -3,13 +3,21 @@ const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 
 const router = express.Router()
-const userFunc = require("./quizHelpers")
+const userFunc = require("./userHelper")
 const db = require("../database/db-config")
 
-// base URL = /quiz
+// base URL = /users
 
 router.get("/", (req, res)=>{
-    res.status(200).json({Hello: "Quiz is here"})
+    res.status(200).json({Hello: "Users are here"})
+})
+
+router.get("/all", (req, res)=>{
+    userFunc
+    .getAll()
+    .then(users=>{
+        res.status(200).json(users)
+    })
 })
 
 
