@@ -38,6 +38,9 @@ exports.up = function(knex) {
         tbl
         .string("answer")
         tbl
+        .boolean("correct_answer")
+        .defaultTo(false)
+        tbl
         .integer("question_id")
         .unsigned()
         .notNullable()
