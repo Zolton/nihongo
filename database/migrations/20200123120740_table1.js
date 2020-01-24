@@ -1,6 +1,6 @@
 // Users to questions = one to many
 // questions to answers = one to many
-
+// users to questions-answered-correct is many-to-many
 
 exports.up = function(knex) {
     return knex.schema
