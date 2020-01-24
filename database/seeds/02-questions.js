@@ -5,11 +5,11 @@ exports.seed = function(knex) {
     .then(function () {
       // Inserts seed entries
       return knex('questions').insert([
-        {question: "Where is the library?", user_id: 1, },
-        {question: "Where is the hospital?", user_id: 1, },
-        {question: "Where is the zen temple?", user_id: 1, },
-        {question: "How are you doing?", user_id: 2, },
-        {question: "That was funny", user_id: 3, }
+        {question: "Where is the library?", author: 1},
+        {question: "Where is the hospital?", author: 1},
+        {question: "Where is the zen temple?", author: 1},
+        {question: "How are you doing?", author: 2},
+        {question: "That was funny", author: 3}
       ]);
     });
 };
