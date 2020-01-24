@@ -30,21 +30,5 @@ function HeaderLink () {
     )
 }
 
-{/* <div className="navLinks">
-          <a
-            href="https://design-your-life-home.netlify.com/"
-            className="navLink"
-          >
-            Home Page
-          </a>
-          <Link to="/" className="navLink">
-            Registration
-          </Link>
-          <Link to="/login" className="navLink">
-            Login
-          </Link>
-          <Link to="/design" className="navLink">
-            Your Journal Entries
-          </Link> */}
 
 export default HeaderLink
