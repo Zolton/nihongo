@@ -29,12 +29,7 @@ function HeaderLink() {
       <a href={baseURL + "contact"} className="navLink">
         Contact Us
       </a>
-      <Link to="/" className="navLink">
-        Registration
-      </Link>
-      <Link to="/login" className="navLink">
-        Login
-      </Link>
+
     </div>
   );
 }
