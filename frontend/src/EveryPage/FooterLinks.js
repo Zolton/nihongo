@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 
 const baseURL = "https://nihongo2go.netlify.com/";
 
@@ -25,9 +26,14 @@ function FooterLinks() {
       <a href={baseURL + "privacy"} className="navLink">
         Privacy Policy
       </a>
+      <Link to={baseURL + "registration"} className="navLink">
+        Registration
+      </Link>
+      <Link to={baseURL + "login"} className="navLink">
+        Login
+      </Link>
     </div>
   );
-
 }
 
 {
