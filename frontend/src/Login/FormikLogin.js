@@ -56,7 +56,7 @@ const FormikLoginForm = withFormik({
       .required("A password is required to continue")
   }),
 
-  
+
   handleSubmit(values, { resetForm, setErrors, props }) {
     axiosWithAuth()
       .post("https://nihongo2go.herokuapp.com/users/login", values)

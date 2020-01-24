@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 
 //import axiosWithAuth from "../security/AxiosWithAuth";
 
-function KnownUserHomePage() {
-  return (
-  <div>
-      Hello User!
-    </div>
+function AboutUs () {
+
+    return (<div>
+
+      <p>Hello from AboutUs</p></div>
     )
 }
 
-export default KnownUserHomePage;
+
+
+export default AboutUs
