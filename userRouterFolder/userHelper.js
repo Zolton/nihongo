@@ -7,7 +7,7 @@ module.exports = {
   reqBodyCheck,
   hashPassword,
   generateToken,
-  //findUser,
+  findUser,
   //findUserEmail,
   //getAll,
 };
@@ -43,35 +43,21 @@ function generateToken(user, expiration) {
   return jwt.sign(payload, secret, options);
 }
 
-function hashPassword(req, res, next) {
-  let user = req.body;
-  const hash = bcrypt.hashSync(user.password, 5);
-  user.password = hash;
-  next();
-}
-
-// Misc
-
-// function findUser (userName) {
-//   return db("users").where({username: userName}).first()
-// }
-
-// function findUserEmail (userEmail) {
-//   let response = db("users").where({email: userEmail})
-//   console.log (response)
-//   return response
-// }
-
-
 // DB calls
 
 function addNewUser(newUser) {
   return db("users").insert(newUser);
 }
 
-function login(user) {
-  return db("users")
+function findUser (userName) {
+  return db("users").where({username: userName}).first()
 }
+
+// function findUserEmail (userEmail) {
+//   let response = db("users").where({email: userEmail})
+//   console.log (response)
+//   return response
+// }
 
 // function getAll() {
 //     return db("users");

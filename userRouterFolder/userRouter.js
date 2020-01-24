@@ -7,9 +7,9 @@ const userFunc = require("./userHelper");
 
 // base URL = /users
 
-router.get("/", (req, res) => {
-  res.status(200).json({ Hello: "Users are here" });
-});
+// router.get("/", (req, res) => {
+//   res.status(200).json({ Hello: "Users are here" });
+// });
 
 router.post("/register",
   userFunc.reqBodyCheck,
@@ -40,6 +40,7 @@ router.post("/login", userFunc.reqBodyCheck, (req, res) => {
     userFunc
     .findUser(username)
     .then(user => {
+        // Compare hashed user password to db hashed password
       if (user && bcrypt.compareSync(password, user.password)) {
         const token = userFunc.generateToken(user, expiration);
         res.status(200).json({ token });
