@@ -18,3 +18,10 @@ function getAllQuestions() {
 function getAllAnswers() {
     return db("answers")
 }
+
+// addUserID takes user_id from decoded token, adds to user req body
+// reqBodyCheck ensures all required fields are present
+function addUserID(req, res, next) {
+  req.body.user_id = req.userInfo.subject;
+  next();
+}
