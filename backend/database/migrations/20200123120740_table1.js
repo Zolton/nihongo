@@ -2,6 +2,8 @@
 // questions to answers = one to many
 // users to questions-answered-correct is many-to-many
 
+// only add user to questions answered if answered correctly
+
 exports.up = function(knex) {
     return knex.schema
     .createTable("users", tbl => {
