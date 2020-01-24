@@ -14,5 +14,5 @@
 
  [[redirect]]
   from = "/*"
-  to = "/index.html"
+  to = "https://www.apps.zolton.dev"
   status = 200
