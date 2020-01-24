@@ -4,16 +4,14 @@ import FooterLinks from "../EveryPage/FooterLinks";
 
 //import axiosWithAuth from "../security/AxiosWithAuth";
 
-function Error404 () {
-
-    return (<div>
-        <HeaderLink />
+function Error404() {
+  return (
+    <div>
+      <HeaderLink />
       <p>Hello from Error404</p>
-      <FooterLinks/>
-      </div>
-    )
+      <FooterLinks />
+    </div>
+  );
 }
 
-
-
-export default Error404
+export default Error404;
