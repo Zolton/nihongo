@@ -1,34 +1,55 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react";
 
-function HeaderLink () {
-    return (
-        <div><a href="http://localhost:3000/" className="navLink">
+const baseURL = "https://nihongo2go.netlify.com/";
+
+function HeaderLink() {
+  return (
+    <div>
+      <a href={baseURL} className="navLink">
         Home Page
       </a>
-      <a href="http://localhost:3000/login" className="navLink">
+      <a href={baseURL + "login"} className="navLink">
         Login
       </a>
-      <a href="http://localhost:3000/registration" className="navLink">
+      <a href={baseURL + "registration"} className="navLink">
         Registration
       </a>
-      <a href="http://localhost:3000/home" className="navLink">
+      <a href={baseURL + "home"} className="navLink">
         Quizzes
       </a>
-      <a href="http://localhost:3000/about" className="navLink">
+      <a href={baseURL + "about"} className="navLink">
         About Us
       </a>
-      <a href="http://localhost:3000/tos" className="navLink">
+      <a href={baseURL + "tos"} className="navLink">
         Terms Of Service
       </a>
-      <a href="http://localhost:3000/privacy" className="navLink">
+      <a href={baseURL + "privacy"} className="navLink">
         Privacy Policy
       </a>
-      <a href="http://localhost:3000/contact" className="navLink">
+      <a href={baseURL + "contact"} className="navLink">
         Contact Us
       </a>
-      </div>
-    )
+    </div>
+  );
 }
 
+{
+  /* <div className="navLinks">
+          <a
+            href="https://design-your-life-home.netlify.com/"
+            className="navLink"
+          >
+            Home Page
+          </a>
+          <Link to="/" className="navLink">
+            Registration
+          </Link>
+          <Link to="/login" className="navLink">
+            Login
+          </Link>
+          <Link to="/design" className="navLink">
+            Your Journal Entries
+          </Link> */
+}
 
-export default HeaderLink
+export default HeaderLink;
