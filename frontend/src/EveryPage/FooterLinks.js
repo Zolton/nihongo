@@ -8,6 +8,7 @@ function FooterLinks() {
       <a href={baseURL} className="navLink">
         Home Page
       </a>
+
       <a href={baseURL + "about"} className="navLink">
         About Us
       </a>
@@ -17,6 +18,7 @@ function FooterLinks() {
       <a href={baseURL + "home"} className="navLink">
         Quizzes
       </a>
+
       <a href={baseURL + "tos"} className="navLink">
         Terms Of Service
       </a>
@@ -25,6 +27,7 @@ function FooterLinks() {
       </a>
     </div>
   );
+
 }
 
 {
