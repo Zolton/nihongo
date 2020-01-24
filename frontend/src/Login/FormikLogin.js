@@ -58,7 +58,7 @@ const FormikLoginForm = withFormik({
 
   handleSubmit(values, { resetForm, setErrors, props }) {
     axiosWithAuth()
-      .post("https://hr-bw3.herokuapp.com/api/auth/login", values)
+      .post("https://nihongo2go.herokuapp.com/users/login", values)
       .then(res => {
         //TAKE THIS OUT AFTER ITS WORKING
         // console.log(res.data.user.id);

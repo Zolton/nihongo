@@ -41,7 +41,7 @@ const FormikRegistrationForm = withFormik({
 
   handleSubmit(values, { resetForm, setErrors, props }) {
     axiosWithAuth()
-      .post("https://hr-bw3.herokuapp.com/api/auth/register", values)
+      .post("https://nihongo2go.herokuapp.com/users/register", values)
       .then(res => {
         // console.log("axios post res");
         // console.log(res);
