@@ -1,36 +1,34 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-const baseURL = "https://nihongo2go.netlify.com/";
+//const baseURL = "https://nihongo2go.netlify.com/";
 
 function FooterLinks() {
   return (
     <div>
-      <a href={baseURL} className="navLink">
-        Home Page
-      </a>
-
-      <a href={baseURL + "about"} className="navLink">
-        About Us
-      </a>
-      <a href={baseURL + "contact"} className="navLink">
-        Contact Us
-      </a>
-      <a href={baseURL + "home"} className="navLink">
-        Quizzes
-      </a>
-
-      <a href={baseURL + "tos"} className="navLink">
-        Terms Of Service
-      </a>
-      <a href={baseURL + "privacy"} className="navLink">
-        Privacy Policy
-      </a>
-      <Link to={baseURL + "registration"} className="navLink">
+      <Link to="/" className="navLink">
+        Home
+      </Link>
+      <Link to="/registration" className="navLink">
         Registration
       </Link>
-      <Link to={baseURL + "login"} className="navLink">
+      <Link to="/login" className="navLink">
         Login
+      </Link>
+      <Link to="/about" className="navLink">
+        About Us
+      </Link>
+      <Link to="/contact" className="navLink">
+        Contact Us
+      </Link>
+      <Link to="/home" className="navLink">
+        Quizzes
+      </Link>
+      <Link to="/tos" className="navLink">
+        Terms of Service
+      </Link>
+      <Link to="/privacy" className="navLink">
+        Privacy Policy
       </Link>
     </div>
   );

@@ -33,6 +33,9 @@ function HeaderLink() {
       <Link to={baseURL + "registration"} className="navLink">
         Registration
       </Link>
+      <Link to="/contact" className="navLink">
+        Contact Us
+      </Link>
       <Link to={baseURL + "login"} className="navLink">
         Login
       </Link>
