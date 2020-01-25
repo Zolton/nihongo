@@ -1,5 +1,6 @@
 import React from "react";
-import { BrowserRouter as Link } from "react-router-dom"
+import { Link } from "react-router-dom"
+import registration from "../Login/Registration"
 
 const baseURL = "https://nihongo2go.netlify.com/";
 
@@ -9,7 +10,7 @@ function HeaderLink() {
       <Link to="/" className="navLink">
         Home
       </Link>
-      <Link to="/registration" className="navLink">
+      <Link to={"/registration"} className="navLink">
         Registration
       </Link>
       <Link to="/login" className="navLink">
