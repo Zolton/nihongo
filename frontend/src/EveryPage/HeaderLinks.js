@@ -6,38 +6,29 @@ const baseURL = "https://nihongo2go.netlify.com/";
 function HeaderLink() {
   return (
     <div>
-      <a href={baseURL} className="navLink">
-        Home Page
-      </a>
-      <a href={baseURL + "login"} className="navLink">
+      <Link to="/" className="navLink">
+        Home
+      </Link>
+      <Link to="/registration" className="navLink">
+        Registration
+      </Link>
+      <Link to="/login" className="navLink">
         Login
-      </a>
-      <a href={baseURL + "registration"} className="navLink">
-        Registration
-      </a>
-      <a href={baseURL + "home"} className="navLink">
-        Quizzes
-      </a>
-      <a href={baseURL + "about"} className="navLink">
+      </Link>
+      <Link to="/about" className="navLink">
         About Us
-      </a>
-      <a href={baseURL + "tos"} className="navLink">
-        Terms Of Service
-      </a>
-      <a href={baseURL + "privacy"} className="navLink">
-        Privacy Policy
-      </a>
-      <a href={baseURL + "contact"} className="navLink">
-        Contact Us
-      </a>
-      <Link to={baseURL + "registration"} className="navLink">
-        Registration
       </Link>
       <Link to="/contact" className="navLink">
         Contact Us
       </Link>
-      <Link to={baseURL + "login"} className="navLink">
-        Login
+      <Link to="/home" className="navLink">
+        Quizzes
+      </Link>
+      <Link to="/tos" className="navLink">
+        Terms of Service
+      </Link>
+      <Link to="/privacy" className="navLink">
+        Privacy Policy
       </Link>
     </div>
   );
