@@ -5,7 +5,7 @@
 
 [build]
   base = "frontend/"
-  publish = "build/"
+  publish = "frontend/build/"
   command = "yarn build"
 
   # A basic redirect rule
@@ -16,3 +16,11 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+# Return unauthorized users to login
+  from = "/home/*"
+  to = "/login"
+  status = 401
+  force = true
+  [redirects.headers]
+    X-From = "Netlify"
