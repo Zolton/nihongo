@@ -1,13 +1,12 @@
 # Settings in the [build] context are global and are applied to all contexts
 # unless otherwise overridden by more specific contexts.
- [[redirect]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+
   
 [build]
+
 # Directory to change to before starting a build.
 # This is where Netlify will look for package.json/.nvmrc/etc.
+
   base = "frontend/"
  
 # Directory (relative to root of your repo) that contains the deploy-ready
@@ -19,9 +18,3 @@
 # Build command.
 
   command = "yarn build"
-
- # A basic redirect rule
- # For use with react router. Keeps user from leaving index.html when
- # refreshing or pasting different routes into the browser.
-
-
