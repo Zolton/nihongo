@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import HeaderLink from "../EveryPage/HeaderLinks";
 import FooterLinks from "../EveryPage/FooterLinks";
 
