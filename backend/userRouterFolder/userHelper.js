@@ -53,9 +53,12 @@ function findUser (userName) {
   return db("users").where({username: userName}).first()
 }
 
+// grab required data off .then promise
 // function findUserEmail (userEmail) {
-//   let response = db("users").where({email: userEmail})
+  //let findUser = 0
+//   let response = db("users").where({email: userEmail}).then(findU=>findUser = findU)
 //   console.log (response)
+//  console.log(findUser)
 //   return response
 // }
 
