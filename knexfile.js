@@ -1,7 +1,7 @@
 // Update with your config settings.
 const localPg = {
   host: "localhost",
-  database: "soupkitchen",
+  database: "nihongo2go",
   user: "admin",
   password: "admin"
 };
