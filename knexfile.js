@@ -48,10 +48,10 @@ module.exports = {
     connection: productionDBConnection,
    
     migrations: {
-      tableName: __dirname + "./database/migrations"
+      tableName: "./database/migrations"
     },
     seeds: {
-      director: __dirname + "./database/seeds"
+      director: "./database/seeds"
     }
   }
 };
