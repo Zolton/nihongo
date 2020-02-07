@@ -30,6 +30,9 @@ function FooterLinks() {
       <Link to="/privacy" className="navLink">
         Privacy Policy
       </Link>
+      <Link to="/dmca" className="navLink">
+        DMCA
+      </Link>
     </div>
   );
 }
