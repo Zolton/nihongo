@@ -10,6 +10,4 @@ function DMCA () {
     )
 }
 
-
-
 export default DMCA
