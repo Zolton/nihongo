@@ -27,6 +27,7 @@ function hashPassword (req, res, next) {
   let password = req.body.password
   let hash = bcrypt.hashSync(password, 5)
   password = hash
+  req.body.password = password
   next()
 }
 

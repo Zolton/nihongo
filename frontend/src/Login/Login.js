@@ -1,13 +1,14 @@
 import React from "react";
+import FormikLoginForm from "./FormikLogin"
 
 //import axiosWithAuth from "../security/AxiosWithAuth";
 
 // Route = /login
 
-function Login() {
+function Login(props) {
   return (
     <div>
-      <p>Hello from Login</p>
+      <FormikLoginForm {...props} />
     </div>
   );
 }
