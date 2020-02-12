@@ -43,17 +43,13 @@ const FormikRegistrationForm = withFormik({
     axiosWithAuth()
       .post("https://nihongo2go.herokuapp.com/users/register", values)
       .then(res => {
-        // console.log("axios post res");
-        // console.log(res);
-        console.log("Info submitted")
-        props.history.push("/login");
         resetForm();
+        props.history.push("/login");
       })
       .catch(reject => {
         // TAKE THIS OUT AFTER ITS WORKING - SECURITY RISK
         //  console.log("axios post rejection");
-        console.log(reject);
-        console.log("Info NOT submitted")
+        //console.log(reject);
       });
   }
 })(RegistrationForm);

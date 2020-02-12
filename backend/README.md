@@ -23,4 +23,3 @@
 
 # Backend to-do
 * Add ability to upgrade users from members to mods or admins
-* Add timestamps for user account creation and last login date

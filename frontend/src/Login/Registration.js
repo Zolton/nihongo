@@ -4,11 +4,12 @@ import FormikRegistrationForm from "./FormikRegistration"
 
 // Route = /registration
 
-function Registration() {
+function Registration(props) {
 
     return (
 <div>
-      <FormikRegistrationForm />
+
+      <FormikRegistrationForm {...props} />
       </div>
     )
 }

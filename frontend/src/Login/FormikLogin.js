@@ -1,7 +1,7 @@
 import React from "react";
 import { withFormik, Field, Form } from "formik";
 import * as Yup from "yup";
-import axiosWithAuth from "../security/AxiosWithAuth";
+import axiosWithAuth from "../Security/axiosWithAuth";
 
 function LoginForm({ values, errors, touched, isSubmitting }) {
   return (
@@ -38,11 +38,11 @@ function LoginForm({ values, errors, touched, isSubmitting }) {
 }
 
 const FormikLoginForm = withFormik({
-  mapPropsToValues({ username, password }) {
+  mapPropsToValues({ username, password, tokenExpiration }) {
     return {
       username: username || "",
       password: password || "",
-      expiration: tokenExpiration
+      expiration: tokenExpiration || "1h"
     };
   },
 
