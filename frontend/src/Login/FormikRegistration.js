@@ -14,8 +14,8 @@ function RegistrationForm({ values, errors, touched, isSubmitting }) {
       <Field name="password" type="password" />
       {touched.password && errors.password && <p>Sorry! {errors.password}</p>}
       <label> Optional: Enter your email so we can keep you up to date on new features</label>
-      <Field name="email" type="password" />
-      {touched.password && errors.password && <p>Sorry! {errors.password}</p>}
+      <Field name="email" type="email" />
+      {touched.email && errors.email && <p>Sorry! {errors.email}</p>}
       <button className="loginButton" type="submit">Submit</button>
     </Form>
   );
@@ -45,13 +45,15 @@ const FormikRegistrationForm = withFormik({
       .then(res => {
         // console.log("axios post res");
         // console.log(res);
+        console.log("Info submitted")
         props.history.push("/login");
         resetForm();
       })
       .catch(reject => {
         // TAKE THIS OUT AFTER ITS WORKING - SECURITY RISK
         //  console.log("axios post rejection");
-        //  console.log(reject);
+        console.log(reject);
+        console.log("Info NOT submitted")
       });
   }
 })(RegistrationForm);
