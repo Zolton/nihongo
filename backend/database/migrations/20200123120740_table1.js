@@ -6,25 +6,25 @@ exports.up = function(knex) {
   return knex.schema
     .createTable("users", tbl => {
       tbl
-      .increments();
+        .increments();
       tbl
         .string("username", 128)
         .unique()
         .notNullable();
       tbl
-      .string("password", 128)
-      .notNullable();
+        .string("password", 128).notNullable();
       tbl
-      .string("email", 128)
-      .unique();
+        .string("email", 128).unique();
       tbl
         .string("role", 128)
         .notNullable()
         .defaultTo("member");
+      tbl
+        .timestamps(true, true);
     })
     .createTable("questions", tbl => {
       tbl
-      .increments();
+        .increments();
       tbl
         // Sqlite max string length = ~ 1 billion
         .string("question");
@@ -35,16 +35,17 @@ exports.up = function(knex) {
         .references("id")
         .inTable("users")
         .onDelete("CASCADE")
-        .onUpdate("CASCADE");
+        .onUpdate("CASCADE")
+      tbl
+        .timestamps(true, true)
     })
     .createTable("answers", tbl => {
       tbl
-      .increments();
+        .increments();
       tbl
-      .string("answer");
+        .string("answer");
       tbl
-      .boolean("correct_answer")
-      .defaultTo(false);
+        .boolean("correct_answer").defaultTo(false);
       tbl
         .integer("question_id")
         .unsigned()
@@ -53,6 +54,8 @@ exports.up = function(knex) {
         .inTable("questions")
         .onDelete("CASCADE")
         .onUpdate("CASCADE");
+      tbl
+        .timestamps(true, true);
     })
     .createTable("QuestionsAnsweredCorrectly", tbl => {
       tbl
@@ -71,6 +74,8 @@ exports.up = function(knex) {
         .inTable("questions")
         .onDelete("CASCADE")
         .onUpdate("CASCADE");
+      tbl
+        .timestamps(true, true);
     });
 };
 

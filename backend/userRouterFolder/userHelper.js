@@ -14,8 +14,9 @@ module.exports = {
 
 // Middleware 
 
+// Don't need to check for role, default is member.  Upgrades done on backend for now, admin accounts on front end in future
 function reqBodyCheck(req, res, next) {
-  if (req.body.username && req.body.password && req.body.role) {
+  if (req.body.username && req.body.password) {
     next();
   } else {
     res.status(400).json({ Error: "You are missing a required field" });
