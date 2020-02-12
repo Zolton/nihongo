@@ -60,12 +60,9 @@ const FormikLoginForm = withFormik({
     axiosWithAuth()
       .post("https://nihongo2go.herokuapp.com/users/login", values)
       .then(res => {
-        //TAKE THIS OUT AFTER ITS WORKING
-        // console.log(res.data.user.id);
         localStorage.setItem("token", res.data.token);
-        localStorage.setItem("userID", res.data.user.id);
         resetForm();
-        props.history.push("/design");
+        props.history.push("/home");
       })
       .catch(rej => {
         // console.log("axios get reject");
