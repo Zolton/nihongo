@@ -1,12 +1,16 @@
 import React from "react";
+import FormikRegistrationForm from "./FormikRegistration"
+import axiosWithAuth from "../Security/axiosWithAuth";
 
-//import axiosWithAuth from "../security/AxiosWithAuth";
+// Route = /registration
 
 function Registration() {
 
     return (
 <div>
-      <p>Hello from Registration</p></div>
+      <p>Hello from Registration</p>
+      <FormikRegistrationForm />
+      </div>
     )
 }
 
