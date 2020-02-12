@@ -2,12 +2,14 @@ import React from "react";
 
 //import axiosWithAuth from "../security/AxiosWithAuth";
 
-function Login() {
+// Route = /login
 
-    return (
-<div>
-      <p>Hello from Login</p></div>
-    )
+function Login() {
+  return (
+    <div>
+      <p>Hello from Login</p>
+    </div>
+  );
 }
 
-export default Login
+export default Login;
