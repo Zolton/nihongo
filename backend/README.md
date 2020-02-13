@@ -23,4 +23,3 @@
 
 # Backend to-do
 * Add ability to upgrade users from members to mods or admins
-* updated_at timestamp not updating correctly on login

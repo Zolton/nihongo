@@ -37,7 +37,7 @@ router.post("/login", userFunc.reqBodyCheck, (req, res) => {
   let username = req.body.username;
   let password = req.body.password;
   let expiration = req.body.expiration
-    userFunc
+  userFunc
     .findUser(username)
     .then(user => {
       // Compare hashed user password to db hashed password

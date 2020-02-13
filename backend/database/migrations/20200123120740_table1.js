@@ -21,6 +21,9 @@ exports.up = function(knex) {
         .defaultTo("member");
       tbl
         .timestamps(true, true);
+      tbl
+        .timestamp('lastLogin')
+        .defaultTo(knex.fn.now())
     })
     .createTable("questions", tbl => {
       tbl

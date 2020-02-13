@@ -8,6 +8,7 @@ module.exports = {
   hashPassword,
   generateToken,
   findUser,
+  updateLastLogin
   //findUserEmail,
   //getAll,
 };
@@ -35,7 +36,7 @@ function generateToken(user, expiration) {
   // Auto-inserted by jwt: iat/exp, "Issued at", and "expiration" dates in UTC time
   // jwt.verify automatically checks if expired
   const payload = {
-    id: user.id,
+    subject: user.id,
     name: user.username,
     role: user.role
   };
@@ -54,6 +55,11 @@ function addNewUser(newUser) {
 
 function findUser (userName) {
   return db("users").where({username: userName}).first()
+}
+
+function updateLastLogin (userID) {
+  let date = Date()
+  return db("users").where({id: userID}).update({lastLogin: date})
 }
 
 // grab required data off .then promise

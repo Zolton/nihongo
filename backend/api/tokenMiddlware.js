@@ -10,9 +10,9 @@ module.exports = (req, res, next) => {
         res.status(401).json({ Error: "Bad token" });
       } 
       else {
-        // decoded token info = username + id, added to incoming request for backend convenience  
+        // Decoded token info = username + id, added to incoming request for backend convenience  
         // Makes it easier to find relevant user info in db since user_id is foreign key for tables, saves a db call to find it
-        req.userInfo = decodedToken;
+        req.body.userInfo = decodedToken;
         next();
       }
     });
