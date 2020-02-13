@@ -8,6 +8,7 @@ module.exports = {
   hashPassword,
   generateToken,
   findUser,
+  updateLastLogin
   //findUserEmail,
   //getAll,
 };
@@ -32,7 +33,8 @@ function hashPassword (req, res, next) {
 }
 
 function generateToken(user, expiration) {
-  // Only user ID and username are on token
+  // Auto-inserted by jwt: iat/exp, "Issued at", and "expiration" dates in UTC time
+  // jwt.verify automatically checks if expired
   const payload = {
     subject: user.id,
     name: user.username,
@@ -53,6 +55,11 @@ function addNewUser(newUser) {
 
 function findUser (userName) {
   return db("users").where({username: userName}).first()
+}
+
+function updateLastLogin (userID) {
+  let date = Date()
+  return db("users").where({id: userID}).update({lastLogin: date})
 }
 
 // grab required data off .then promise

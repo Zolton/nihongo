@@ -5,10 +5,12 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props =>
+      // Only checks if local storage has something called "token"
+      // Just keeps out the dilettante hackers; backend is doing the security work
       localStorage.getItem("token") ? (
         <Component {...props} />
       ) : (
-        <Redirect to="/" />
+        <Redirect to="/login" />
       )
     }
   />
