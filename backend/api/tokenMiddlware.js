@@ -5,12 +5,13 @@ module.exports = (req, res, next) => {
   const token = req.headers.authorization;
   if (token) {
     jwt.verify(token, secret, (error, decodedToken) => {
+      //  Triggered if token invalid, or valid but expired - jwt.verify does a lot of great work behind the scenes
       if (error) {
         res.status(401).json({ Error: "Bad token" });
-      } else {
-        // Decode token here and pass along info for front end to hook into userID
-        // Adding userInfo to every request - in addition to req.body, there's now req.userInfo
-        //  Can grab it from anywhere to ID the user and ensure only appropriate info is displayed
+      } 
+      else {
+        // decoded token info = username + id, added to incoming request for backend convenience  
+        // Makes it easier to find relevant user info in db since user_id is foreign key for tables, saves a db call to find it
         req.userInfo = decodedToken;
         next();
       }

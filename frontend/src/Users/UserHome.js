@@ -4,8 +4,8 @@ import React from "react";
 
 function KnownUserHomePage() {
   return (
-  <div>
-      Hello User!
+  <div className="test">
+      <p>Hello User!</p>
     </div>
     )
 }

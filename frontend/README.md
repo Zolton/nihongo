@@ -25,4 +25,3 @@
 
 # Frontend to-do
 * Add ability to upgrade users from members to mods or admins once backend functions created
-* Fix private route to check for VALID token and redirect properly
