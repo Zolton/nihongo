@@ -11,14 +11,14 @@ const db = require("../database/db-config")
 
 router.get("/", (req, res)=>{
     const userID = req.body.userInfo.subject
-    userHelpers
-        .updateLastLogin(userID)
-        .then(updated =>{
-            res.status(200).json({Hello: "Quiz is here"})
-        })
-        .catch(error=>{
-            res.status(500).json({Error: "Could not update last login date"})
-        })
+    // userHelpers
+    //     .updateLastLogin(userID)
+    //     .then(updated =>{
+    //         res.status(200).json({Hello: "Quiz is here"})
+    //     })
+    //     .catch(error=>{
+    //         res.status(500).json({Error: "Could not update last login date"})
+    //     })
 })
 
 router.get("/allquestions", (req, res)=>{

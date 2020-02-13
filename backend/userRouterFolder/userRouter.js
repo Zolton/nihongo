@@ -11,7 +11,8 @@ const userFunc = require("./userHelper");
 //   res.status(200).json({ Hello: "Users are here" });
 // });
 
-router.post("/register",
+router.post(
+  "/register",
   userFunc.reqBodyCheck,
   userFunc.hashPassword,
   (req, res) => {
@@ -22,12 +23,10 @@ router.post("/register",
         res.status(200).json(newU);
       })
       .catch(error500 => {
-        res
-          .status(500)
-          .json({
-            Error: "Sorry, that email or username are already taken",
-            error500
-          });
+        res.status(500).json({
+          Error: "Sorry, that email or username are already taken",
+          error500
+        });
       });
   }
 );
@@ -36,14 +35,18 @@ router.post("/register",
 router.post("/login", userFunc.reqBodyCheck, (req, res) => {
   let username = req.body.username;
   let password = req.body.password;
-  let expiration = req.body.expiration
+  let expiration = req.body.expiration;
   userFunc
     .findUser(username)
     .then(user => {
       // Compare hashed user password to db hashed password
       if (user && bcrypt.compareSync(password, user.password)) {
         const token = userFunc.generateToken(user, expiration);
-        res.status(200).json({ token });
+        // Updates user table with latest login date
+        userFunc.updateLastLogin(user.id)
+          .then(updated => {
+            res.status(200).json({ token });
+        });
       } else {
         res.status(401).json({ Error: "Password fail" });
       }
@@ -52,5 +55,14 @@ router.post("/login", userFunc.reqBodyCheck, (req, res) => {
       res.status(500).json({ Error: "Didn't get past findUser" });
     });
 });
+
+// userHelpers
+// .updateLastLogin(userID)
+// .then(updated =>{
+//     res.status(200).json({Hello: "Quiz is here"})
+// })
+// .catch(error=>{
+//     res.status(500).json({Error: "Could not update last login date"})
+// })
 
 module.exports = router;
