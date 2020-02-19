@@ -26,3 +26,4 @@
 # Frontend to-do
 * Add ability to upgrade users from members to mods or admins once backend functions created
 * Add route for quizzes, make axios call, test pulling quiz seeds from backend
+* Front end doesn't state reason login fails - add user friendly messages detailing why (ie - not registers, bad credentials, etc)
