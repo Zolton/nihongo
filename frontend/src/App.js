@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route} from "react-router-dom";
 import "./App.css";
-import HeaderLink from "./EveryPage/HeaderLinks";
+import HeaderLinks from "./EveryPage/HeaderLinks";
 import LandingPage from "./PublicPages/LandingPage";
 import Login from "./Login/Login";
 import Registration from "./Login/Registration";
@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <HeaderLink />
+        <HeaderLinks />
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/about" component={AboutUs} />
         <Route exact path="/login" component={Login} />
