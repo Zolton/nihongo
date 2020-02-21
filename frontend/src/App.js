@@ -21,7 +21,7 @@ function App() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/404" component={Error404} />
         <Route exact path="/registration" component={Registration} />
-        <PrivateRoute exact path="/home" component={UserHome} />
+        <Route exact path="/home" component={UserHome} />
         <FooterLinks />
       </Router>
     </div>
