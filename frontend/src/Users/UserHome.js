@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 //import axiosWithAuth from "../security/AxiosWithAuth";
 
-function KnownUserHomePage() {
+function UserHome() {
   const [quizData, setQuizData] = useState();
 
   useEffect(() => {
@@ -27,4 +27,4 @@ function KnownUserHomePage() {
   );
 }
 
-export default KnownUserHomePage;
+export default UserHome;

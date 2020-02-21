@@ -6,7 +6,7 @@ import LandingPage from "./PublicPages/LandingPage";
 import Login from "./Login/Login";
 import Registration from "./Login/Registration";
 import PrivateRoute from "./Security/PrivateRoute";
-import KnownUserHomePage from "./Users/UserHome";
+import UserHome from "./Users/UserHome";
 import AboutUs from "./PublicPages/AboutUs";
 import Error404 from "./PublicPages/404";
 import FooterLinks from "./EveryPage/FooterLinks";
@@ -21,7 +21,7 @@ function App() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/404" component={Error404} />
         <Route exact path="/registration" component={Registration} />
-        <PrivateRoute exact path="/home" component={KnownUserHomePage} />
+        <PrivateRoute exact path="/home" component={UserHome} />
         <FooterLinks />
       </Router>
     </div>
