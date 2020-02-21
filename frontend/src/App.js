@@ -18,7 +18,7 @@ import DMCA from "./PublicPages/DMCA"
 import LandingPage from "./PublicPages/LandingPage"
 
 // Private Routes - registers users only
-import PrivateRoute from "./Security/PrivateRoute";
+// import PrivateRoute from "./Security/PrivateRoute";
 import UserHome from "./Users/UserHome";
 
 function App() {
@@ -33,7 +33,7 @@ function App() {
         <Route exact path="/contact" component={ContactUs} />
         <Route exact path="/dmca" component={DMCA} />
         <Route exact path="/registration" component={Registration} />
-        <PrivateRoute exact path="/home" component={UserHome} />
+        <Route exact path="/home" component={UserHome} />
         <FooterLinks />
       </Router>
     </div>
