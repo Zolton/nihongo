@@ -12,7 +12,6 @@ const db = require("../database/db-config")
 router.get("/", (req, res)=>{
     const userID = req.body.userInfo.subject
     // userHelpers
-    //     .updateLastLogin(userID)
     //     .then(updated =>{
     //         res.status(200).json({Hello: "Quiz is here"})
     //     })
