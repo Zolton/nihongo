@@ -44,7 +44,6 @@ router.post("/login", userFunc.reqBodyCheck, (req, res) => {
         const token = userFunc.generateToken(user, expiration);
 
         res.status(200).json({ token });
-
       } else {
         res.status(401).json({ Error: "Password fail" });
       }
