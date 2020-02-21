@@ -42,11 +42,8 @@ router.post("/login", userFunc.reqBodyCheck, (req, res) => {
       // Compare hashed user password to db hashed password
       if (user && bcrypt.compareSync(password, user.password)) {
         const token = userFunc.generateToken(user, expiration);
-        // Updates user table with latest login date
-        userFunc.updateLastLogin(user.id)
-          .then(updated => {
-            res.status(200).json({ token });
-        });
+
+        res.status(200).json({ token });
       } else {
         res.status(401).json({ Error: "Password fail" });
       }
