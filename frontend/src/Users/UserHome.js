@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-//import axiosWithAuth from "../security/AxiosWithAuth";
+import axiosWithAuth from "../Security/axiosWithAuth";
 
 function UserHome() {
   const [quizData, setQuizData] = useState();
