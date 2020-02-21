@@ -16,13 +16,10 @@ import AboutUs from "./PublicPages/AboutUs";
 import ContactUs from "./PublicPages/ContactUs"
 import DMCA from "./PublicPages/DMCA"
 import LandingPage from "./PublicPages/LandingPage"
-import PrivateRoute from "./Security/PrivateRoute";
 
 // Private Routes - registers users only
+import PrivateRoute from "./Security/PrivateRoute";
 import UserHome from "./Users/UserHome";
-
-
-
 
 function App() {
   return (
@@ -36,7 +33,7 @@ function App() {
         <Route exact path="/contact" component={ContactUs} />
         <Route exact path="/dmca" component={DMCA} />
         <Route exact path="/registration" component={Registration} />
-        <Route exact path="/home" component={UserHome} />
+        <PrivateRoute exact path="/home" component={UserHome} />
         <FooterLinks />
       </Router>
     </div>
