@@ -6,7 +6,7 @@ const cors = require("cors")
 const jwt = require("jsonwebtoken")
 
 // Global Middleware
-const tokenCheck = require("./tokenMiddlware")
+const tokenCheck = require("./tokenMiddleware")
 
 // Location of routers
 const userRouter = require("../userRouterFolder/userRouter")
