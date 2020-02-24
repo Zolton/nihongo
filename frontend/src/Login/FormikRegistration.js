@@ -40,8 +40,9 @@ const FormikRegistrationForm = withFormik({
   }),
 
   handleSubmit(values, { resetForm, setErrors, props }) {
+    console.log("This is process: ", process.env.REACT_APP_BACK_END_URL)
     axiosWithAuth()
-      .post("https://nihongo2go.herokuapp.com/users/register", values)
+      .post(`${process.env.REACT_APP_BACK_END_URL}/users/register`, values)
       .then(res => {
         resetForm();
         props.history.push("/login");
