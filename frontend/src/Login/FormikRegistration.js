@@ -26,7 +26,7 @@ const FormikRegistrationForm = withFormik({
     return {
       username: username || "",
       password: password || "",
-      email: email || "",
+      email: email || null,
     };
   },
 
@@ -40,7 +40,6 @@ const FormikRegistrationForm = withFormik({
   }),
 
   handleSubmit(values, { resetForm, setErrors, props }) {
-    console.log("This is process: ", process.env.REACT_APP_BACK_END_URL)
     axiosWithAuth()
       .post(`${process.env.REACT_APP_BACK_END_URL}/users/register`, values)
       .then(res => {
@@ -49,8 +48,8 @@ const FormikRegistrationForm = withFormik({
       })
       .catch(reject => {
         // TAKE THIS OUT AFTER ITS WORKING - SECURITY RISK
-        //  console.log("axios post rejection");
-        //console.log(reject);
+        console.log("axios post rejection");
+        console.log(reject);
       });
   }
 })(RegistrationForm);

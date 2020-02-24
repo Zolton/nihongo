@@ -19,9 +19,11 @@
 
 
 ## Tech stack:
-* Backend uses Node.js with Express, and an SQLite3 server.  Heroku plugin used on hosting site to convert the database to PostGres
+* Backend uses Node.js with Express, and an SQLite3 server.  Heroku plugin used on hosting site to convert the database to PostGreSQL
 * Frontend will use React
 
+### ENV file requirements:
+* REACT_APP_BACK_END_URL
 
 # Frontend to-do
 * Add ability to upgrade users from members to mods or admins once backend functions created
