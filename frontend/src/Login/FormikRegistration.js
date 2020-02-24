@@ -48,8 +48,8 @@ const FormikRegistrationForm = withFormik({
       })
       .catch(reject => {
         // TAKE THIS OUT AFTER ITS WORKING - SECURITY RISK
-        console.log("axios post rejection");
-        console.log(reject);
+        // console.log("axios post rejection");
+        // console.log(reject);
       });
   }
 })(RegistrationForm);
