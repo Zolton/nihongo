@@ -15,11 +15,18 @@
 ## Farther future:
 * All user-submitted quizzes go to community for voting; need X amount of "yes" votes to ensure translation/answers are correct before being put in pool of multiple choice quizzes
 * Shunt multiple choice into Easy section.  Break out Medium and Hard sections
-* Medium/Hard involve showing a Japanese paragraph with faulty vocabulary/grammar, enable user to click on portions of sentences and words they believe are wrong, and enter what it should be.
+* Medium/Hard involve showing a Japanese paragraph with faulty vocabulary/grammar. Enable user to click on portions of sentences and words they believe are wrong, and enter what it should be.
 
 ## Tech stack:
-* Backend uses Node.js with Express, and an SQLite3 server.  Heroku plugin used on hosting site to convert the database to PostGres
-* Frontend will use React
+* Backend uses Node.js with Express, and an SQLite3 server.  Heroku plugin used on hosting site to convert the database to PostGreSQL
+* Frontend uses React
+
+### ENV file requirements:
+* PORT
+* Token SECRET
+* DATABASE_URL
+* DB_ENV
+* PROJECT_PATH
 
 # Backend to-do
 * Add ability to upgrade users from members to mods or admins
