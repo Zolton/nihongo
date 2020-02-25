@@ -1,5 +1,5 @@
 import React from "react";
-import QuizData from "../Questions/quizDataMap";
+import QuizData from "../Questions/questionDataMap";
 import AnswerData from "../Answers/AnswerDataMap";
 
 function Quiz(props) {
@@ -7,9 +7,9 @@ function Quiz(props) {
     <div>
     <h1>Hello From Quiz</h1>
       {console.log("Quiz data: ", props)}
-      {console.log("Quiz data: ", props.answersObject)}
-      <QuizData />
-      <AnswerData />
+      {console.log("Quiz data for answers: ", props.answersObject)}
+      {/* <QuizData />
+      <AnswerData /> */}
 
     </div>
   );
