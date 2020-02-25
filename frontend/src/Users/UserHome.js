@@ -7,7 +7,7 @@ function UserHome() {
 
   useEffect(() => {
     axiosWithAuth()
-      .get(`https://nihongo2go.netlify.com/quiz/allquestions`)
+      .get(`https://nihongo2go.herokuapp.com/quiz/allquestions`)
       .then(res => {
         console.log("this is res data", res.data);
         setQuizData(res.data);
