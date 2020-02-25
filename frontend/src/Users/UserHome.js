@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-import QuizDataMap from "./quizDataMap";
-
-
-import IndivQuizQuestion from "./IndivQuestion";
+import QuizData from "./quizDataMap"
 
 function UserHome() {
 
@@ -11,8 +8,7 @@ function UserHome() {
   return (
     <div className="test">
       <p>Hello User!</p>
-      <QuizDataMap />
-      <IndivQuizQuestion />
+      <QuizData />
 
     </div>
   );

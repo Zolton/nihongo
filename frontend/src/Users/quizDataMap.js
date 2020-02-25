@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axiosWithAuth from "../Security/axiosWithAuth";
-import IndivQuizQuestion from "./IndivQuestion";
+import IndivQuizQuestionFormatting from "./IndivQuestion";
+
+// Component purpose: Pull from backend, map over it, send each individual question to another component
 
 function QuizDataFormatting() {
-
-    const [quizData, setQuizData] = useState();
-    
-    // Pull in data from backend, set it into a hook
-    useEffect(() => {
+  const [quizData, setQuizData] = useState();
+  // Pull in data from backend, set it into a hook
+  useEffect(() => {
     axiosWithAuth()
       .get(`https://nihongo2go.herokuapp.com/quiz/allquestions`)
       .then(res => {
@@ -22,23 +22,18 @@ function QuizDataFormatting() {
 
   return (
     <div>
-          {/* Once Quiz data is loaded, map over it and send each question to IndivQuestion component;
-          if quiz data is not yet loaded, tell User to please wait */}
-          {quizData ? (
-            // Each questionsObject sent is a separate question with its own data
-            quizData.map(questionsObject => (<div>
-              {console.log("From user home: ", questionsObject)}
-              <IndivQuizQuestion questionsObject={questionsObject} />
-             </div>
-            ))
-          ) : (
-            <h1> Loading, Please wait...</h1>
-          )}
-
+      {/* FYI - quizData comes in as an array of objects - [ {...}, {...} ] */}
+      {quizData ? (
+        quizData.map(questionsObject => (
+          <div>
+            <IndivQuizQuestionFormatting questionsObject={questionsObject} />
+          </div>
+        ))
+      ) : (
+        <h1> Loading, Please wait...</h1>
+      )}
     </div>
-  )}
+  );
+}
 
-
-
-
-export default QuizDataFormatting
+export default QuizDataFormatting;
