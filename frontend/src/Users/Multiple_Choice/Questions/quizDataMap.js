@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axiosWithAuth from "../Security/axiosWithAuth";
+import axiosWithAuth from "../../../Security/axiosWithAuth";
 import IndivQuizQuestionFormatting from "./IndivQuestion";
 
 // Component purpose: Pull from backend, map over it, send each individual question to another component
