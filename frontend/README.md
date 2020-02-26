@@ -16,6 +16,7 @@
 ## Farther future:
 * All user-submitted quizzes go to community for voting; need X amount of "yes" votes to ensure translation/answers are correct before being put in pool of multiple choice quizzes
 * Shunt multiple choice into Easy section.  Break out Medium and Hard sections
+* Stripe/Amazon payment integration for Premium memberships
 
 
 ## Tech stack:
@@ -27,7 +28,5 @@
 
 # Frontend to-do
 * Add ability to upgrade users from members to mods or admins once backend functions created
-* Front end doesn't state reason login fails - add user friendly messages detailing why (ie - not registers, bad credentials, etc)
-* Add loading screent to login netlify takes forever to load up when asleep
-* Route for quizzes works, data is just gibberish - fix & format for user friendly experience
+
 
