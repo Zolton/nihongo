@@ -1,26 +1,31 @@
-import React, { useState, useEffect }  from "react";
-import QuizData from "../Questions/questionDataMap";
-import AnswerData from "../Answers/AnswerDataMap";
-import QuizFormat from "./QuizFormat"
+import React, { useState, useEffect } from "react";
+import axiosWithAuth from "../../../Security/axiosWithAuth";
+import QuizFormat from "./QuizFormat";
 
-function Quiz(props) {
-    const [questionData, setQuestionData] = useState();
-    const [answerData, setAnswerData] = useState();
+function QuizDataPull() {
+  const [quizData, setQuizData] = useState();
 
+  // Pull in data from backend, set it into a hook
+  useEffect(() => {
+    axiosWithAuth()
+      .get(`${process.env.REACT_APP_BACK_END_URL}/quiz/mulchoice`)
+      .then(res => {
+        console.log("res data: ", res.data)
+        setQuizData(res.data);
+      })
+      .catch(rej => {
+        // console.log("GET rejected");
+        // console.log(rej);
+      });
+  }, []);
   return (
     <div>
-    <h1>Hello From Quiz</h1>
-    <QuizData setQuestionData = {setQuestionData} />
-    <AnswerData setAnswerData = {setAnswerData} />
-      {console.log("Quiz data questions: ", questionData)}
-      {console.log("Quiz data answers: ", answerData)}
-      {/* {console.log("Quiz data for answers: ", props.answersObject)} */}
-      {/* <QuizData />
-      <AnswerData /> */}
-    {/* <QuizFormat questionData = {questionData} answerData = {answerData} /> */}
-
+      {quizData ? (quizData.map(x=>console.log(x))) : (<h1>Loading, pleassse wait</h1>)}
+      Hello from quiz data pull
+      {console.log("this is quizData: ", quizData)}
+      <QuizFormat quizData={quizData} />
     </div>
   );
 }
 
-export default Quiz;
+export default QuizDataPull;

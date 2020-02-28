@@ -3,7 +3,9 @@ import React from "react";
 function QuizFormat (props) {
 
     return (
-        console.log("Props are: ", props)
+        <div>
+        {console.log("Props are: ", props)}
+            Hello from formatting</div>
 
     )
 }

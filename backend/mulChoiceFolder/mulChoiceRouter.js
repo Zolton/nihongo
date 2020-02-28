@@ -44,6 +44,4 @@ router.get("/mulchoice", (req, res)=>{
     })
 })
 
-
-
 module.exports = router
