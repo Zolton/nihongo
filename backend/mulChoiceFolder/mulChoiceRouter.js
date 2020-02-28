@@ -36,6 +36,12 @@ router.get("/allanswers", (req, res)=>{
     })
 })
 
-
+router.get("/mulchoice", (req, res)=>{
+    mulChoiceHelpers.
+    questionsAndAnswers()
+    .then(QandA=>{
+        res.status(200).json(QandA)
+    })
+})
 
 module.exports = router

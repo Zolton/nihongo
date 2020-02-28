@@ -7,7 +7,8 @@ module.exports = (req, res, next) => {
     jwt.verify(token, secret, (error, decodedToken) => {
       //  Triggered if token invalid, or valid but expired - jwt.verify does a lot of great work behind the scenes
       if (error) {
-        res.status(401).json({ Error: "Bad token" });
+        console.log(error)
+        res.status(401).json({ Error: "Bad token"});
       } 
       else {
         // Decoded token info = username + id, added to incoming request for backend convenience  
