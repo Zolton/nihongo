@@ -58,7 +58,7 @@ const FormikLoginForm = withFormik({
 
   handleSubmit(values, { resetForm, setErrors, props }) {
     axiosWithAuth()
-      .post("https://nihongo2go.herokuapp.com/users/login", values)
+      .post(`${process.env.REACT_APP_BACK_END_URL}/users/login`, values)
       .then(res => {
         localStorage.setItem("token", res.data.token);
         resetForm();

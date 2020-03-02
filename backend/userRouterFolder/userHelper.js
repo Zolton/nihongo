@@ -40,7 +40,7 @@ function generateToken(user, expiration) {
     name: user.username,
     role: user.role
   };
-  const secret = process.env.SECRET || "Monkey Punch";
+  const secret = process.env.SECRET || "Monkey Punch"
   const options = {
     expiresIn: expiration || "1d"
   };
