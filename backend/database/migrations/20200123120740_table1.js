@@ -32,6 +32,8 @@ exports.up = function(knex) {
         // Sqlite max string length = ~ 1 billion
         .string("question");
       tbl
+        .string("difficulty")
+      tbl
         .integer("author")
         .unsigned()
         .notNullable()
