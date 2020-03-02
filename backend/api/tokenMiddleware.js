@@ -1,6 +1,8 @@
 const jwt = require("jsonwebtoken");
 const secret = process.env.SECRET || "Monkey Punch";
 
+// guarnateed expired token for later - create better error messages for user: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoxLCJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE1ODMxNzQ1OTMsImV4cCI6MTU4MzE3ODE5M30.2DQZbmzU9lvZHNfdmM7h8d6ufSFDyBeHpF2UpcaXYps
+
 module.exports = (req, res, next) => {
   const token = req.headers.authorization;
   if (token) {
@@ -8,7 +10,7 @@ module.exports = (req, res, next) => {
       //  Triggered if token invalid, or valid but expired - jwt.verify does a lot of great work behind the scenes
       if (error) {
         console.log(error)
-        res.status(401).json({ Error: "Bad token"});
+        res.status(401).json({ Error: "Bad token", error});
       } 
       else {
         // Decoded token info = username + id, added to incoming request for backend convenience  
