@@ -21,7 +21,7 @@ function getAllAnswers() {
 }
 
 function questionsAndAnswers () {
-  return db("answers").join("questions", "answers.question_id", "=", "questions.id")
+  return db("questions").join("answers", "questions.id", "=", "answers.question_id")
 }
 
 // addUserID takes user_id from decoded token, adds to user req body
