@@ -6,3 +6,7 @@
 
 * res.data [{},{}] has proven unworkable.  Separate out questions + id and answers + question_id into separate obejcts/arrays and match on quiz card.  Front or back end solution possible
 
+backend solution: grab questions, grab answers, if question id = anwer.question_id, insert into questsion object, then send whole package to fornt end, map over, and display
+
+front end soltuion: map over, put questions + id into a set, answers + question_id in an array, match up and display
+
