@@ -36,9 +36,10 @@ router.get("/allanswers", (req, res)=>{
     })
 })
 
-router.get("/mulchoice", (req, res)=>{
+router.get("/mulchoice/:difficulty", (req, res)=>{
+    let userDifficulty = req.params.difficulty
     mulChoiceHelpers.
-    questionsAndAnswers()
+    questionsAndAnswersEasy(userDifficulty)
     .then(QandA=>{
         res.status(200).json(QandA)
     })

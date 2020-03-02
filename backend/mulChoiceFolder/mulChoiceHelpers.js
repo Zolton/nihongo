@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 module.exports = {
   getAllQuestions,
   getAllAnswers,
-  questionsAndAnswers
+  questionsAndAnswersEasy
 //   addNewUser,
 //   findUser,
 //   hashPassword,
@@ -20,8 +20,8 @@ function getAllAnswers() {
     return db("answers")
 }
 
-function questionsAndAnswers () {
-  return db("questions").join("answers", "questions.id", "=", "answers.question_id")
+function questionsAndAnswersEasy (userDifficulty) {
+  return db("questions").where({difficulty: userDifficulty}).join("answers", "questions.id", "=", "answers.question_id")
 }
 
 // addUserID takes user_id from decoded token, adds to user req body
