@@ -1,6 +1,8 @@
 const jwt = require("jsonwebtoken");
 const secret = process.env.SECRET || "Monkey Punch";
 
+// guarnateed expired token for later - create better error messages for user: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoxLCJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE1ODMxNzQ1OTMsImV4cCI6MTU4MzE3ODE5M30.2DQZbmzU9lvZHNfdmM7h8d6ufSFDyBeHpF2UpcaXYps
+
 module.exports = (req, res, next) => {
   const token = req.headers.authorization;
   if (token) {

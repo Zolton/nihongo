@@ -1,18 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-function QuizFormat (props) {
-    {console.log("Props2 are: ", props)}
-    const quizData = props.quizData
-    console.log("quizData is ", quizData)
-      
+function QuizFormat(props) {
+  const quizData = props.quizData;
 
-    return (
-        <div>
-           {/* {quizData ? (quizData.map(x=> x.difficulty == "expert" ? (console.log("found it: ", x)) : console.log("none found") )) : (<h1>Loading, pleassse wait</h1>)} */}
-        
-            Hello from formatting</div>
+  console.log("formatting: ", quizData);
 
-    )
+  return (
+    <div>
+      Hello from formatting
+      {quizData ? (
+        quizData.map(data => (
+          <div>
+            <h2>{data.question}</h2>
+            <h2>{data.answer}</h2>
+          </div>
+        ))
+      ) : (
+        <h1>Loading, please wait</h1>
+      )}
+    </div>
+  );
 }
 
-export default QuizFormat
+export default QuizFormat;
