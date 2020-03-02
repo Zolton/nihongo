@@ -4,3 +4,5 @@
 * Finish formatting backend quiz data into single questions + answers
 ** Fun idea: Make a hash table - questions = key, possible answers = values.  Quick & easy to go down the line for users
 
+* res.data [{},{}] has proven unworkable.  Separate out questions + id and answers + question_id into separate obejcts/arrays and match on quiz card.  Front or back end solution possible
+
