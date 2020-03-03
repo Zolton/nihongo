@@ -6,4 +6,4 @@
 
 * res.data [{},{}] has proven unworkable.  Separate out questions + id and answers + question_id into separate obejcts/arrays and match on quiz card.  Front or back end solution possible
 * Backend solution easiest, but function needs work.  Ugly, complicated, and has async problems.  Consider async/await solution for final array
-
+* Better: Move ugly function to helper folder, set db returns as variables; easier to work with if split up into stages and separate function calls, passing around variables as they resolve
