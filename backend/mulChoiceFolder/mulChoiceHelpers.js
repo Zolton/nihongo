@@ -5,7 +5,8 @@ const jwt = require("jsonwebtoken");
 module.exports = {
   getAllQuestions,
   getAllAnswers,
-  questionsAndAnswersEasy
+  questions,
+  answers
 //   addNewUser,
 //   findUser,
 //   hashPassword,
@@ -20,9 +21,15 @@ function getAllAnswers() {
     return db("answers")
 }
 
-function questionsAndAnswersEasy (userDifficulty) {
-  return db("questions").where({difficulty: userDifficulty}).join("answers", "questions.id", "=", "answers.question_id")
+function answers (id) {
+  return db("answers").where({question_id: id})
 }
+
+function questions (userDifficulty) {
+  return db("questions").where({difficulty: userDifficulty})
+}
+  // return db("questions").where({difficulty: userDifficulty}).join("answers", "questions.id", "=", "answers.question_id")
+  // Scrapped; resulting data object is too difficult to work with on front end.  Easier to just create an entirely different object
 
 // addUserID takes user_id from decoded token, adds to user req body
 // reqBodyCheck ensures all required fields are present
