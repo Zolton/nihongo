@@ -1,48 +1,69 @@
-const express = require("express")
-const bcrypt = require("bcryptjs")
-const jwt = require("jsonwebtoken")
+const express = require("express");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
-const router = express.Router()
-const mulChoiceHelpers = require("./mulChoiceHelpers")
-const userHelpers = require("../userRouterFolder/userHelper")
-const db = require("../database/db-config")
+const router = express.Router();
+const mulChoiceHelpers = require("./mulChoiceHelpers");
+const userHelpers = require("../userRouterFolder/userHelper");
+const db = require("../database/db-config");
 
 // base URL = /quiz
 
-router.get("/", (req, res)=>{
-    const userID = req.body.userInfo.subject
-    // userHelpers
-    //     .then(updated =>{
-    //         res.status(200).json({Hello: "Quiz is here"})
-    //     })
-    //     .catch(error=>{
-    //         res.status(500).json({Error: "Could not update last login date"})
-    //     })
-})
+router.get("/", (req, res) => {
+  const userID = req.body.userInfo.subject;
+  // userHelpers
+  //     .then(updated =>{
+  //         res.status(200).json({Hello: "Quiz is here"})
+  //     })
+  //     .catch(error=>{
+  //         res.status(500).json({Error: "Could not update last login date"})
+  //     })
+});
 
-router.get("/allquestions", (req, res)=>{
-    mulChoiceHelpers
-    .getAllQuestions()
-    .then(questions=>{
-        res.status(200).json(questions)
-    })
-})
+router.get("/allquestions", (req, res) => {
+  mulChoiceHelpers.getAllQuestions().then(questions => {
+    res.status(200).json(questions);
+  });
+});
 
-router.get("/allanswers", (req, res)=>{
-    mulChoiceHelpers
-    .getAllAnswers()
-    .then(answers=>{
-        res.status(200).json(answers)
-    })
-})
+router.get("/allanswers", (req, res) => {
+  mulChoiceHelpers.getAllAnswers().then(answers => {
+    res.status(200).json(answers);
+  });
+});
 
-router.get("/mulchoice/:difficulty", (req, res)=>{
-    let userDifficulty = req.params.difficulty
-    mulChoiceHelpers.
-    questionsAndAnswersEasy(userDifficulty)
-    .then(QandA=>{
-        res.status(200).json(QandA)
-    })
-})
+router.get("/mulchoice/:difficulty", (req, res) => {
+  let questionsTable = {};
+  let answersTable = [];
+  let final = [];
 
-module.exports = router
+  let userDifficulty = req.params.difficulty;
+  // Fetch relevant questions
+  mulChoiceHelpers
+  .questions(userDifficulty)
+  .then(questions => {
+    questionsTable = questions;
+    // Separate out response into individual objects
+    questions
+    .map(singleQuestion =>
+      mulChoiceHelpers
+        // Send each indiv id to fetch only relevant responses
+        .answers(singleQuestion.id)
+        .then(answersResponse =>
+          answersResponse[0].question_id == singleQuestion.id
+            ? ((singleQuestion.answer = answersResponse),
+              final.push(singleQuestion), 
+              // This is the only place it returns, need to tell it to wait
+              console.log("final", final))
+            : (null),
+            //console.log("final", final)
+        ),
+        //console.log("final", final)
+    )
+    //console.log("final", final)
+    
+  })
+  //console.log("final", final)
+});
+
+module.exports = router;
