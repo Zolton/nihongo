@@ -37,9 +37,6 @@ router.get("/allanswers", (req, res) => {
 });
 
 router.get("/mulchoice/:difficulty", (req, res) => {
-  let questionsTable = {};
-  let answersTable = [];
-  let final = [];
 
   let userDifficulty = req.params.difficulty;
   // Fetch relevant questions
@@ -54,53 +51,9 @@ router.get("/mulchoice/:difficulty", (req, res) => {
     .then(combinedObject => 
       mulChoiceHelpers
       .removeRepetitionInFinalObject(combinedObject))
-    .then(final=>res.status(200).json(final))
+    .then(finalObject=>
+      res.status(200).json(finalObject)
+      )
 });
 
-//   mulChoiceHelpers
-//   .questions(userDifficulty)
-//   .then(questions => {
-//     questionsTable = questions
-//     // questionsTable.map(singleQuestion=>mulChoiceHelpers.answers(singleQuestion.id))
-//     // Separate out response into individual objects
-
-//   })
-//   .then(secondStep=>
-//     questionsTable.map(singleQuestion=>mulChoiceHelpers.answers(singleQuestion.id)
-
-//     ))
-//     .then(test=>console.log("second step", test))
-//   //console.log("test1", questionsTable)
-//   //.then(questionsTable.map(singleQuestion=>mulChoiceHelpers.answers(singleQuestion.id)))
-//   //.then(asdf=>console.log("test2", questionsTable))
-//   //console.log("questions", questions)
-//   //console.log("final", final)
-// });
-
 module.exports = router;
-
-// mulChoiceHelpers
-//   .questions(userDifficulty)
-//   .then(questions => {
-//     questionsTable = questions
-//     console.log("questions", questions)
-//     // Separate out response into individual objects
-//     questions
-//     .map(singleQuestion =>
-//       mulChoiceHelpers
-//         // Send each indiv id to fetch only relevant responses
-//         .answers(singleQuestion.id)
-//         .then(answersResponse =>
-//           answersResponse[0].question_id == singleQuestion.id
-//             ? ((singleQuestion.answer = answersResponse),
-//               final.push(singleQuestion),
-//               // This is the only place it returns, need to tell it to wait
-//               console.log("final", final))
-//             : (null),
-//             //console.log("final", final)
-//         ),
-//         //console.log("final", final)
-//     )
-//     //console.log("final", final)
-
-//   })
