@@ -8,3 +8,4 @@
 * Backend solution easiest, but function needs work.  Ugly, complicated, and has async problems.  Consider async/await solution for final array
 * Better: Move ugly function to helper folder, set db returns as variables; easier to work with if split up into stages and separate function calls, passing around variables as they resolve
 * Guess: solution is an HOC that takes in quesstion object + answer array + final json array, combines, then outputs; may or may not need to combine with an async function for each question object, should be possible with fewer steps
+* NB: Multiple db calls not the answer,scrap the idea; Big O of N will kill at scale
