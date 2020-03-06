@@ -5,6 +5,7 @@ function AnswerFormat(props) {
     let answerObject = props.answerObject
     let setCurrentIndex = props.setCurrentIndex
     let currentIndex = props.currentIndex
+    let quizLength = props.quizLength
     return (
       <div>
         {answerObject.map(singleAnswer => {
@@ -19,7 +20,7 @@ function AnswerFormat(props) {
             </form>
           );
         })}
-        <QuestionButton setCurrentIndex={setCurrentIndex} currentIndex={currentIndex} />
+        <QuestionButton setCurrentIndex={setCurrentIndex} currentIndex={currentIndex} quizLength = {quizLength}  />
       </div>
     );
   }
