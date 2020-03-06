@@ -19,7 +19,7 @@ import LandingPage from "./PublicPages/LandingPage"
 
 // Private Routes - registers users only
 // import PrivateRoute from "./Security/PrivateRoute";
-import UserHome from "./Users/UserHome";
+import UserHome from "./LoggedInUsers/UserLandingPage";
 
 function App() {
   return (
