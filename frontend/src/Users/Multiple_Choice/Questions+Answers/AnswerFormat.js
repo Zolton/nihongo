@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import QuestionButton from "./QuestionButton"
+import QuestionButtons from "./QuestionButtons"
 
 function AnswerFormat(props) {
     let answerObject = props.answerObject
@@ -20,7 +20,7 @@ function AnswerFormat(props) {
             </form>
           );
         })}
-        <QuestionButton setCurrentIndex={setCurrentIndex} currentIndex={currentIndex} quizLength = {quizLength}  />
+        <QuestionButtons setCurrentIndex={setCurrentIndex} currentIndex={currentIndex} quizLength = {quizLength}  />
       </div>
     );
   }

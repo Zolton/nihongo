@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-function QuestionButton(props) {
+function QuestionButtons(props) {
     let setCurrentIndex = props.setCurrentIndex
     let currentIndex = props.currentIndex
     let quizLength = props.quizLength
-    console.log(quizLength)
 
     return (
         <div>
@@ -13,7 +12,6 @@ function QuestionButton(props) {
             <button onClick={ () => currentIndex < quizLength ? (setCurrentIndex(currentIndex+1)) : (null) }>Next Question</button>
         </div>
     )
-
 }
 
-export default QuestionButton
+export default QuestionButtons
