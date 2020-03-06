@@ -43,7 +43,6 @@ function addUserID(req, res, next) {
 function shrinkAnswersIntoObject (object) {
   let answersArray = []
   let i = 0
-  // Create an answer object
   for (i = 0; i < object.length; i++) {
     // Combine answer information into a single object
     answersArray.push({
@@ -51,7 +50,6 @@ function shrinkAnswersIntoObject (object) {
       correct_answer: object[i].correct_answer, 
       question_id: object[i].question_id
     })
-    // Push new object onto existing object
     // NB: Renamed key is plural "answers", as opposed to original key, "answer"
     object[i].answers = answersArray
     // Delete old keys from object - they're copied into the new answer array, not needed outside it

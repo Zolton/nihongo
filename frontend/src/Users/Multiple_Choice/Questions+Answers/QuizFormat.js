@@ -1,25 +1,38 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
+import AnswerFormat from "./AnswerFormat";
 
 function QuizFormat(props) {
   const quizData = props.quizData;
+  
 
-  console.log("formatting: ", quizData);
+  // Used for changing to next question
+  const [currentIndex, setCurrentIndex] = useState(0)
 
-  return (
-    <div>
-      Hello from formatting
-      {quizData ? (
-        quizData.map(data => (
-          <div>
-            <h2>{data.question}</h2>
-            <h2>{data.answer}</h2>
-          </div>
-        ))
-      ) : (
-        <h1>Loading, please wait</h1>
-      )}
-    </div>
-  );
+
+  // Check if props loaded yet
+  if (quizData) {
+    let keys = Object.keys(quizData);
+    let quizLength = keys.length
+    quizLength -= 1
+    let quizQuestion = quizData[currentIndex].question;
+    let answerObject = quizData[currentIndex].answers;
+    return (
+      <div>
+        <h1>Question Number {currentIndex + 1}</h1>
+         <h3>{quizQuestion}</h3>
+         <AnswerFormat answerObject = {answerObject} setCurrentIndex={setCurrentIndex} currentIndex={currentIndex} quizLength = {quizLength} />
+      </div>
+    );
+    // If props not loaded, keep waiting
+  } 
+  else {
+    return (
+      <div>
+        {/* Insert loading animation component here */}
+        Loading, please wait
+      </div>
+    );
+  }
 }
 
 export default QuizFormat;
