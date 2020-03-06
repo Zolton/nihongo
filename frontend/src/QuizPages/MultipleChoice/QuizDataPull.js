@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axiosWithAuth from "../../../Security/axiosWithAuth";
+import axiosWithAuth from "../../Security/axiosWithAuth";
 import QuizFormat from "./QuizFormat";
 
 function QuizDataPull(props) {
