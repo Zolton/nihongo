@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import axiosWithAuth from "../../Security/axiosWithAuth";
-import QuizFormat from "./QuizFormat";
+import axiosWithAuth from "../Security/axiosWithAuth";
+import QuizFormat from "./QuestionFormat";
 
 function QuizDataPull(props) {
   const [quizData, setQuizData] = useState()

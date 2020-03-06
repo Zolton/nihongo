@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import QuizDataPull from "../QuizPages/MultipleChoice/QuizDataPull"
+import QuizDataPull from "../QuizPages/QuizDataPull"
 
 function UserHome() {
   // Temp - chagne this to a button/user choice; easy, medium, hard, expert - will detemrine which quiz questions are sent back from backend
