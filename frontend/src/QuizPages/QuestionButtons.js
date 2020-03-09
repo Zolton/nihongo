@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 function QuestionButtons(props) {
+
+    // Rename props for easier time
     let setCurrentIndex = props.setCurrentIndex
     let currentIndex = props.currentIndex
     let quizLength = props.quizLength
