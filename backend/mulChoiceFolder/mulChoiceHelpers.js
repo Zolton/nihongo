@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 module.exports = {
   getAllQuestions,
   getAllAnswers,
-  questions,
+  retrieveQuestionsAndAnswers,
   answers,
   shrinkAnswersIntoObject,
   combineAnswerObjects,
@@ -28,8 +28,8 @@ function answers (id) {
   return db("answers").where({question_id: id})
 }
 
-function questions (userDifficulty) {
-  return db("answers").join("questions", "questions.id", "=", "answers.question_id").where({difficulty: userDifficulty})
+function retrieveQuestionsAndAnswers (userDifficulty) {
+  return db("questions").join("answers", "answers.question_id", "=", "questions.id").where({difficulty: userDifficulty})
 }
 
 // addUserID takes user_id from decoded token, adds to user req body
@@ -46,19 +46,23 @@ function shrinkAnswersIntoObject (object) {
   for (i = 0; i < object.length; i++) {
     // Combine answer information into a single object
     answersArray.push({
+      answer_id: object[i].id,
       answer: object[i].answer, 
       correct_answer: object[i].correct_answer, 
       question_id: object[i].question_id
     })
     // NB: Renamed key is plural "answers", as opposed to original key, "answer"
     object[i].answers = answersArray
+    
     // Delete old keys from object - they're copied into the new answer array, not needed outside it
     delete object[i].correct_answer
-    delete object[i].question_id
     delete object[i].answer
-    
+    delete object[i].id
+    delete object[i].created_at
+    delete object[i].updated_at
     answersArray = []
   }
+  //console.log("object after change is: ", object.answers)
   return object
 }
 
@@ -69,7 +73,7 @@ function combineAnswerObjects (object) {
   let i = 0
   for (i = 0; i < object.length-1; i++) {
     // If the questions are the same
-    if (object[i].id == object[i+1].id) {
+    if (object[i].question_id == object[i+1].question_id) {
       // Pop off answer object ahead
       let temp = object[i+1].answers.pop()
       // Add to current answer object
@@ -86,11 +90,12 @@ function combineAnswerObjects (object) {
 
 // Removes duplicate questions & answers
 function removeRepetitionInFinalObject (object) {
+  
   // Start with object[0] in finalObject just in case there's only 1 element in the object
   let finalObject = [object[0]]
   let i = 0
   for (i=0; i < object.length-1; i++) {
-    if (object[i].id !== object[i+1].id) {
+    if (object[i].question_id !== object[i+1].question_id) {
       finalObject.push(object[i+1])
     }
   }

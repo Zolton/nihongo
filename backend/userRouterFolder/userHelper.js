@@ -8,7 +8,8 @@ module.exports = {
   hashPassword,
   generateToken,
   findUser,
-  updateLastLogin
+  updateLastLogin,
+  errorLogging
   //findUserEmail,
   //getAll,
 };
@@ -60,6 +61,10 @@ function findUser (userName) {
 function updateLastLogin (userID) {
   let date = Date()
   return db("users").where({id: userID}).update({lastLogin: date})
+}
+
+function errorLogging (error) {
+  return db("UnexpectedErrors").insert(error)
 }
 
 // grab required data off .then promise

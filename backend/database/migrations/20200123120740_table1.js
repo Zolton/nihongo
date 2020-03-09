@@ -81,11 +81,23 @@ exports.up = function(knex) {
         .onUpdate("CASCADE");
       tbl
         .timestamps(true, true);
+    })
+    .createTable("UnexpectedErrors", tbl => {
+      tbl
+        .increments();
+      tbl
+        .string("name", 128)
+      tbl
+        .string("message", 128)
+      tbl
+        .timestamp('Time Recorded')
+        .defaultTo(knex.fn.now())
     });
 };
 
 exports.down = function(knex) {
   return knex.schema
+    .dropTableIfExists("UnexpectedErrors")
     .dropTableIfExists("QuestionsAnsweredCorrectly")
     .dropTableIfExists("answers")
     .dropTableIfExists("questions")
