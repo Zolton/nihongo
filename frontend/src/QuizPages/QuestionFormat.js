@@ -11,6 +11,7 @@ function QuizFormat(props) {
 
   // Check if props loaded yet
   if (quizData) {
+    console.log("quiz data object: ", quizData)
     let keys = Object.keys(quizData);
     let quizLength = keys.length
     quizLength -= 1
