@@ -41,7 +41,7 @@ router.get("/mulchoice/:difficulty", (req, res) => {
   let userDifficulty = req.params.difficulty;
   // Fetch relevant questions
   mulChoiceHelpers
-    .questions(userDifficulty)
+    .retrieveQuestionsAndAnswers(userDifficulty)
     .then(questions => 
       mulChoiceHelpers
       .shrinkAnswersIntoObject(questions))
