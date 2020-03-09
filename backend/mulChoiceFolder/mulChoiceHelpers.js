@@ -43,6 +43,7 @@ function addUserID(req, res, next) {
 function shrinkAnswersIntoObject (object) {
   let answersArray = []
   let i = 0
+  console.log("object is: ", object)
   for (i = 0; i < object.length; i++) {
     // Combine answer information into a single object
     answersArray.push({
