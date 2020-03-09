@@ -17,12 +17,8 @@ function QuizDataPull(props) {
       });
   }, []);
 
-  
   return (
     <div>
-      
-      Hello from quiz data pull
-
       <QuizFormat quizData={quizData} />
     </div>
   );
