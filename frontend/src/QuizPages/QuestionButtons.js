@@ -34,6 +34,13 @@ function QuestionButtons(props) {
         return setAnswerResponse(true);
       } 
       else {
+          let test = localStorage.getItem("correct_answers")
+          console.log("thi sis test", test)
+          console.log(typeof(test))
+          console.log("test lenght", test.length)
+          test = test.split(",").join('')
+          console.log("new test: ", test)
+          console.log(test.length)
         let AnswerArray = `[${correctAnswersArray}, ${answerID}]`;
         const jsonParsedArray = JSON.parse(AnswerArray);
         localStorage.setItem("correct_answers", jsonParsedArray);
@@ -52,18 +59,25 @@ function QuestionButtons(props) {
     if (answerResponse !== null && currentIndex === quizLength) {
       setAnswerResponse(null);
       setAnswerResponse(3);
+      setAxiosCheck(1)
     }
   }
 
   useEffect(() => {
-    axiosWithAuth()
-      .post(`${process.env.REACT_APP_BACK_END_URL}/quiz/mulchoice/${userDifficulty}`)
-      .then(res => {
-        setQuizData(res.data);
-      })
-      .catch(rej => {
-        // console.log("Error message: ", rej)
-      });
+    const correctAnswers = localStorage.getItem("correct_answers")
+    console.log("Sending to axios: ", correctAnswers)
+    // axiosWithAuth()
+    //   .post(`${process.env.REACT_APP_BACK_END_URL}/answers/periodic`, correctAnswers)
+        
+    //   .then(res => {
+    //     console.log(res)
+    //   })
+    // .then(res=>{
+    //     localStorage.removeItem("correct_answers")
+    // })
+    //   .catch(rej => {
+    //     // console.log("Error message: ", rej)
+    //   });
   }, [axiosCheck]);
 
 
