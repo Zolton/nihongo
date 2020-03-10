@@ -1,26 +1,103 @@
 import React, { useState, useEffect } from "react";
+import axiosWithAuth from "../Security/axiosWithAuth"
+import AnswerCorrect from "./AnswerCorrect";
+import AnswerIncorrect from "./AnswerIncorrect";
+import QuizFinished from "./QuizFinished";
 
 function QuestionButtons(props) {
+  const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [answerResponse, setAnswerResponse] = useState();
+  const [axiosCheck, setAxiosCheck] = useState()
+  const [axiosCounter, setAxiosCounter] = useState(0)
 
-    // Rename props for easier time
-    let setCurrentIndex = props.setCurrentIndex
-    let currentIndex = props.currentIndex
-    let quizLength = props.quizLength
+  // Rename props for easier use
+  let setCurrentIndex = props.setCurrentIndex;
+  let currentIndex = props.currentIndex;
+  let quizLength = props.quizLength;
+  let answerID = props.answerID;
+  let answerTF = props.answerTF;
+  let LOCAL_STORAGE_TRIGGER_NUMBER = 5
 
-    // function clickHandler () {
-        // check if selected is correct_answer
-        // if so, display 'Correct!' and add to local storage 
-        // if not, display Incorrect, lock radio buttons, and highlight correct answer
+  // Functions for handling button clicks
 
-    // }
+  // 1) Disables Submit so user can't re-submit
+  // 2) Sets AnswerResponse for component loading
+  function submitHandler() {
+    setButtonDisabled(true);
+    if (answerTF === null) {
+      return setAnswerResponse(false);
+    }
+    // Store correct answers so user doesn't see repeats
+    if (answerTF === 1) {
+      // Check if local storage exists
+      let correctAnswersArray = localStorage.getItem("correct_answers");
+      // If it doesn't exist, make it
+      if (correctAnswersArray === null) {
+        localStorage.setItem("correct_answers", answerID);
+        setAxiosCounter(axiosCounter +1)
+        return setAnswerResponse(true);
+      } 
+      // If local storage alreay exists, add in new correct answer
+      else {
+        let currentArray = localStorage.getItem("correct_answers")
+        let AnswerArray = `[${correctAnswersArray}, ${answerID}]`;
+        const jsonParsedArray = JSON.parse(AnswerArray);
+        localStorage.setItem("correct_answers", jsonParsedArray);
+        setAxiosCounter(axiosCounter+1)
+        // Check if its time to dump the local storage
+        if (axiosCounter >= LOCAL_STORAGE_TRIGGER_NUMBER) {
+              setAxiosCheck(1)
+          }
+        return setAnswerResponse(true);
+      }
+    }
+  }
 
-    return (
-        <div>
-            {/* <button onClick={ () => currentIndex > 0 ? (setCurrentIndex(currentIndex-1)) : (null) }>Previous Question</button> */}
-            <button >Submit Answer</button>
-            <button onClick={ () => currentIndex < quizLength ? (setCurrentIndex(currentIndex+1)) : (null) }>Next Question</button>
-        </div>
-    )
+  function nextQuestion() {
+    if (currentIndex < quizLength) {
+      setButtonDisabled(false);
+      setAnswerResponse(null);
+      setCurrentIndex(currentIndex + 1);
+    }
+    // If user has submitted their answer and question is last one:
+    if (answerResponse !== null && currentIndex === quizLength) {
+      setAnswerResponse(null);
+      setAnswerResponse(3);
+      setAxiosCheck(1)
+    }
+  }
+
+  useEffect(() => {
+    const correctAnswers = localStorage.getItem("correct_answers")
+    console.log("Sending to axios: ", correctAnswers)
+    // axiosWithAuth()
+    //   .post(`${process.env.REACT_APP_BACK_END_URL}/answers/periodic`, correctAnswers)
+        
+    //   .then(res => {
+    //     console.log(res)
+    //   })
+    // .then(res=>{
+    //     localStorage.removeItem("correct_answers")
+     //       setAxiosCounter(0)
+    // })
+    //   .catch(rej => {
+    //     // console.log("Error message: ", rej)
+    //   });
+  }, [axiosCheck]);
+
+
+  return (
+    <div>
+      {console.log("props are ", props)}
+      <button disabled={buttonDisabled} onClick={() => submitHandler()}>
+        Submit Answer
+      </button>
+      <button onClick={() => nextQuestion()}>Next Question</button>
+      {answerResponse === true ? <AnswerCorrect /> : null}
+      {answerResponse === false ? <AnswerIncorrect /> : null}
+      {answerResponse === 3 ? <QuizFinished /> : null}
+    </div>
+  );
 }
 
-export default QuestionButtons
+export default QuestionButtons;

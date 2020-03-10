@@ -10,7 +10,7 @@ function QuizFormat(props) {
   // Check if props loaded yet
   if (quizData) {
 
-    // Rename props for easier time
+    // Rename props for easier use
     let keys = Object.keys(quizData);
     let quizLength = keys.length
     quizLength -= 1
