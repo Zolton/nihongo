@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 function QuestionButtons(props) {
+    
 
-    // Rename props for easier time
+    // Rename props for easier use
     let setCurrentIndex = props.setCurrentIndex
     let currentIndex = props.currentIndex
     let quizLength = props.quizLength
@@ -16,6 +17,7 @@ function QuestionButtons(props) {
 
     return (
         <div>
+            {console.log("props are ", props)}
             {/* <button onClick={ () => currentIndex > 0 ? (setCurrentIndex(currentIndex-1)) : (null) }>Previous Question</button> */}
             <button >Submit Answer</button>
             <button onClick={ () => currentIndex < quizLength ? (setCurrentIndex(currentIndex+1)) : (null) }>Next Question</button>
