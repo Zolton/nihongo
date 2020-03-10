@@ -3,13 +3,15 @@ import QuestionButtons from "./QuestionButtons";
 
 function AnswerFormat(props) {
   
+  const [questionID, setQuestionID] = useState()
   const [answerID, setAnswerID] = useState();
   const [answerTF, setAnswerTF] = useState(null);
 
   // Sets answerID and whether answer is correct in one function so onChange doesn't break
-  function setAnswers(id, TF) {
+  function setAnswers(id, TF, qID) {
     setAnswerID(id);
     setAnswerTF(TF);
+    setQuestionID(qID)
   }
 
   // Rename props for easier use
@@ -17,6 +19,7 @@ function AnswerFormat(props) {
   let setCurrentIndex = props.setCurrentIndex;
   let currentIndex = props.currentIndex;
   let quizLength = props.quizLength;
+  // console.log("props in formatting are: ", props)
 
   return (
     <div>
@@ -32,7 +35,8 @@ function AnswerFormat(props) {
                 onChange={() =>
                   setAnswers(
                     singleAnswer.answer_id,
-                    singleAnswer.correct_answer
+                    singleAnswer.correct_answer,
+                    singleAnswer.question_id
                   )
                 }
                 // Note: Checked works on an T/F basis.  If true, checked, if not, false
@@ -49,6 +53,7 @@ function AnswerFormat(props) {
         quizLength={quizLength}
         answerID={answerID}
         answerTF={answerTF}
+        questionID={questionID}
       />
     </div>
   );
