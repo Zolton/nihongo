@@ -19,7 +19,6 @@ function AnswerFormat(props) {
   let setCurrentIndex = props.setCurrentIndex;
   let currentIndex = props.currentIndex;
   let quizLength = props.quizLength;
-  // console.log("props in formatting are: ", props)
 
   return (
     <div>

@@ -19,9 +19,7 @@ function QuestionButtons(props) {
   let quizLength = props.quizLength;
   let questionID = props.questionID;
   let answerTF = props.answerTF;
-  console.log("button props are", props)
   
-
   // Functions for handling button clicks
 
   function submitHandler() {
@@ -107,7 +105,6 @@ function QuestionButtons(props) {
 
   return (
     <div>
-      {console.log("props are ", props)}
       <button disabled={buttonDisabled} onClick={() => submitHandler()}>
         Submit Answer
       </button>
