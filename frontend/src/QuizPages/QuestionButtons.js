@@ -8,6 +8,7 @@ function QuestionButtons(props) {
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [answerResponse, setAnswerResponse] = useState();
   const [axiosCheck, setAxiosCheck] = useState()
+  const [axiosCounter, setAxiosCounter] = useState(0)
 
   // Rename props for easier use
   let setCurrentIndex = props.setCurrentIndex;
@@ -15,6 +16,7 @@ function QuestionButtons(props) {
   let quizLength = props.quizLength;
   let answerID = props.answerID;
   let answerTF = props.answerTF;
+  let LOCAL_STORAGE_TRIGGER_NUMBER = 5
 
   // Functions for handling button clicks
 
@@ -25,25 +27,27 @@ function QuestionButtons(props) {
     if (answerTF === null) {
       return setAnswerResponse(false);
     }
+    // Store correct answers so user doesn't see repeats
     if (answerTF === 1) {
-      // Store correct answers so user doesn't see repeats
+      // Check if local storage exists
       let correctAnswersArray = localStorage.getItem("correct_answers");
       // If it doesn't exist, make it
       if (correctAnswersArray === null) {
         localStorage.setItem("correct_answers", answerID);
+        setAxiosCounter(axiosCounter +1)
         return setAnswerResponse(true);
       } 
+      // If local storage alreay exists, add in new correct answer
       else {
-          let test = localStorage.getItem("correct_answers")
-          console.log("thi sis test", test)
-          console.log(typeof(test))
-          console.log("test lenght", test.length)
-          test = test.split(",").join('')
-          console.log("new test: ", test)
-          console.log(test.length)
+        let currentArray = localStorage.getItem("correct_answers")
         let AnswerArray = `[${correctAnswersArray}, ${answerID}]`;
         const jsonParsedArray = JSON.parse(AnswerArray);
         localStorage.setItem("correct_answers", jsonParsedArray);
+        setAxiosCounter(axiosCounter+1)
+        // Check if its time to dump the local storage
+        if (axiosCounter >= LOCAL_STORAGE_TRIGGER_NUMBER) {
+              setAxiosCheck(1)
+          }
         return setAnswerResponse(true);
       }
     }
@@ -74,6 +78,7 @@ function QuestionButtons(props) {
     //   })
     // .then(res=>{
     //     localStorage.removeItem("correct_answers")
+     //       setAxiosCounter(0)
     // })
     //   .catch(rej => {
     //     // console.log("Error message: ", rej)
