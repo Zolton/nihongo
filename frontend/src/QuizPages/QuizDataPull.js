@@ -11,6 +11,7 @@ function QuizDataPull(props) {
       .get(`${process.env.REACT_APP_BACK_END_URL}/quiz/mulchoice/${userDifficulty}`)
       .then(res => {
         setQuizData(res.data);
+        console.log("quiz data", quizData)
       })
       .catch(rej => {
         // console.log("Error message: ", rej)

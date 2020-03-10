@@ -9,7 +9,7 @@ function QuizFormat(props) {
 
   // Check if props loaded yet
   if (quizData) {
-
+    console.log("quiz data", quizData)
     // Rename props for easier use
     let keys = Object.keys(quizData);
     let quizLength = keys.length
