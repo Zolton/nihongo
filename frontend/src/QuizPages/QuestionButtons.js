@@ -8,9 +8,11 @@ function QuestionButtons(props) {
   // Variable declaration
   let LOCAL_STORAGE_TRIGGER_NUMBER = 5;
 
-  const [buttonDisabled, setButtonDisabled] = useState(false);
+  // Used to enable/disable submit button
+  const [submitButtonDisabled, setsubmitButtonDisabled] = useState(false);
+  // Trigger for rendering Correct, Incorrect, and You're Done! components
   const [answerResponse, setAnswerResponse] = useState();
-  const [axiosCheck, setAxiosCheck] = useState(false);
+  // Keeps track of local storage, used as trigger for axios post request
   const [axiosCounter, setAxiosCounter] = useState(0);
 
   // Rename props for easier use
@@ -23,8 +25,8 @@ function QuestionButtons(props) {
   // Functions for handling button clicks
 
   function submitHandler() {
-    setButtonDisabled(true);
-    // User answered incorrectly, do nothing
+    setsubmitButtonDisabled(true);
+    // User answered incorrectly, do nothing, tell user they answered incorrectly
     if (answerTF === null) {
       return setAnswerResponse(false);
     }
@@ -32,13 +34,14 @@ function QuestionButtons(props) {
     if (answerTF === 1) {
       // Check if local storage exists
       let correctAnswersArray = localStorage.getItem("correct_answers");
-      // If it doesn't exist, make it
+      // If it doesn't exist, create it
       if (correctAnswersArray === null) {
         localStorage.setItem("correct_answers", questionID);
         setAxiosCounter(axiosCounter + 1);
         return setAnswerResponse(true);
       }
       // If local storage alreay exists, add in new correct answer, check if its time to send to backend
+      //  & tell user they answered correctly
       if (correctAnswersArray !== null) {
         addAnswerToLocalStorage();
         setAxiosCounter(axiosCounter + 1);
@@ -51,7 +54,7 @@ function QuestionButtons(props) {
   function nextQuestion() {
     // More questions to go
     if (currentIndex < quizLength) {
-      setButtonDisabled(false);
+      setsubmitButtonDisabled(false);
       setAnswerResponse(null);
       setCurrentIndex(currentIndex + 1);
     }
@@ -59,7 +62,7 @@ function QuestionButtons(props) {
     if (answerResponse !== null && currentIndex === quizLength) {
       setAnswerResponse(null);
       setAnswerResponse(3);
-      setAxiosCheck(!axiosCheck);
+      updateUserTable_QsAnsweredCorretly()
     }
   }
 
@@ -74,19 +77,21 @@ function QuestionButtons(props) {
 
   function isItTimeToSend() {
     if (axiosCounter >= LOCAL_STORAGE_TRIGGER_NUMBER) {
-      setAxiosCheck(!axiosCheck);
+      updateUserTable_QsAnsweredCorretly()
     }
     return;
   }
 
-  useEffect(() => {
+  function updateUserTable_QsAnsweredCorretly () {
     const correctAnswers = localStorage.getItem("correct_answers")
     // Converts json string to array of numbers
     let correctAnswersSet = new Set()
+    // Turn string into #'s
     correctAnswers.split(",").map(x=>correctAnswersSet.add(+x))
     console.log(correctAnswersSet)
-
+    // Set cleans up duplicates
     let correctAnswersObject = {array3: correctAnswersSet}
+        
     // axiosWithAuth()
     //   .post(`${process.env.REACT_APP_BACK_END_URL}/answers/periodic`, correctAnswersObject)
 
@@ -101,11 +106,14 @@ function QuestionButtons(props) {
       // .catch(rej => {
       //   // console.log("Error message: ", rej)
       // });
-  }, [axiosCheck]);
+
+  }
+
+  
 
   return (
     <div>
-      <button disabled={buttonDisabled} onClick={() => submitHandler()}>
+      <button disabled={submitButtonDisabled} onClick={() => submitHandler()}>
         Submit Answer
       </button>
       <button onClick={() => nextQuestion()}>Next Question</button>
