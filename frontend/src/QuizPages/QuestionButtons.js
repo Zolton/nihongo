@@ -77,7 +77,8 @@ function QuestionButtons(props) {
 
   function isItTimeToSend() {
     if (axiosCounter >= LOCAL_STORAGE_TRIGGER_NUMBER) {
-      updateUserTable_QsAnsweredCorretly()
+      console.log("axios triggered")
+      //updateUserTable_QsAnsweredCorretly()
     }
     return;
   }
@@ -117,9 +118,9 @@ function QuestionButtons(props) {
         Submit Answer
       </button>
       <button onClick={() => nextQuestion()}>Next Question</button>
-      {answerResponse === true ? <AnswerCorrect /> : null}
-      {answerResponse === false ? <AnswerIncorrect /> : null}
-      {answerResponse === 3 ? <QuizFinished /> : null}
+      {answerResponse === true ? (<AnswerCorrect />) : (null)}
+      {answerResponse === false ? (<AnswerIncorrect />) : (null)}
+      {answerResponse === 3 ? (<QuizFinished />) : (null)}
     </div>
   );
 }
