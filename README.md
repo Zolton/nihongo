@@ -13,7 +13,7 @@
 * Idea is to be similar to MATCHA, a quiz version of JapaneseVerbConjugator.com
 * Medium/Hard involve showing a Japanese paragraph with faulty vocabulary/grammar, enable user to click on portions of sentences and words they believe are wrong, and enter what it should be.
 
-## Farther future:
+## Future:
 * All user-submitted quizzes go to community for voting; need X amount of "yes" votes to ensure translation/answers are correct before being put in pool of multiple choice quizzes
 * Stripe/Amazon payment integration for Premium memberships
 * Move to AWS
