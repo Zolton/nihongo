@@ -33,10 +33,11 @@ function QuestionButtons(props) {
     // User answered correctly
     if (answerTF === 1) {
       // Check if local storage exists
-      let correctAnswersArray = window.localStorage.getItem("correct_answers");
+      let correctAnswersArray = localStorage.getItem("correct_answers");
       // If it doesn't exist, create it
       if (correctAnswersArray === null) {
-        window.localStorage.setItem("correct_answers", questionID);
+        console.log("local storage created")
+        localStorage.setItem("correct_answers", questionID);
         setAxiosCounter(axiosCounter + 1);
         return setAnswerResponse(true);
       }
@@ -68,10 +69,10 @@ function QuestionButtons(props) {
 
   // Retrieves localStorage, adds to it, then replaces
   function addAnswerToLocalStorage() {
-    let currentArray = window.localStorage.getItem("correct_answers")
+    let currentArray = localStorage.getItem("correct_answers")
     let AnswerArray = `[${currentArray}, ${questionID}]`
     const jsonParsedArray = JSON.parse(AnswerArray)
-    window.localStorage.setItem("correct_answers", jsonParsedArray)
+    localStorage.setItem("correct_answers", jsonParsedArray)
     return
   }
 
@@ -84,7 +85,7 @@ function QuestionButtons(props) {
   }
 
   function updateUserTable_QsAnsweredCorretly () {
-    const correctAnswers = window.localStorage.getItem("correct_answers")
+    const correctAnswers = localStorage.getItem("correct_answers")
     // Converts json string to array of numbers
     let correctAnswersSet = new Set()
     // Turn string into #'s
@@ -100,7 +101,7 @@ function QuestionButtons(props) {
     //     console.log(res)
     //   })
     // .then(res=>{
-    //     window.localStorage.removeItem("correct_answers")
+    //     localStorage.removeItem("correct_answers")
     //       setAxiosCounter(0)
     //       setAxiosCheck(0)
     // })
