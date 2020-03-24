@@ -32,8 +32,10 @@ function QuestionButtons(props) {
     }
     // User answered correctly
     if (answerTF === 1) {
+      console.log("line 35 hit")
       // Check if local storage exists
       let correctAnswersArray = localStorage.getItem("correct_answers");
+      console.log("correctArray is: ", correctAnswersArray)
       // If it doesn't exist, create it
       if (correctAnswersArray === null) {
         console.log("local storage created")
