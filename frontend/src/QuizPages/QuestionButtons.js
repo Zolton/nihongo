@@ -25,9 +25,11 @@ function QuestionButtons(props) {
   // Functions for handling button clicks
 
   function submitHandler() {
+    console.log("SubmitHandler activated")
     setsubmitButtonDisabled(true);
     // User answered incorrectly, do nothing, tell user they answered incorrectly
     if (answerTF === null) {
+      console.log("answer was false")
       return setAnswerResponse(false);
     }
     // User answered correctly
@@ -46,6 +48,7 @@ function QuestionButtons(props) {
       // If local storage alreay exists, add in new correct answer, check if its time to send to backend
       //  & tell user they answered correctly
       if (correctAnswersArray !== null) {
+        console.log("line 50 hit - localstorage already exists")
         addAnswerToLocalStorage();
         setAxiosCounter(axiosCounter + 1);
         isItTimeToSend()
