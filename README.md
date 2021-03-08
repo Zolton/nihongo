@@ -1,3 +1,6 @@
+# An update:
+* Since becoming gainfully employed in 2020, I've had almost no time to work on this.  My apologies, but I don't see this situation abating any time soon.  Since this project was never really finished, there's no one to read this.  But on the off chance someone does, I'll return to this one day - I love the idea of a Japanese grammar quiz website, and it's full of possibilities - but I just don't have the time these days, working as I am.  I'm still around, still coding, but this personal git repo will remain quiet for the time being.  Happy trails, and may you walk on warm sands.
+
 # Nihongo
 
 * Proof of concept: Enable users to log in, take multiple choice quizzes.
